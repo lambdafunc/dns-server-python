@@ -1,11 +1,11 @@
 import socket
 
 
-def main():
-    # You can use print statements as follows for debugging, they'll be visible when running tests.
-    print("Logs from your program will appear here!")
+# def createheader():
 
-    # Uncomment this block to pass the first stage
+
+def main():
+    print("Server started..")
     
     udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     udp_socket.bind(("127.0.0.1", 2053))
@@ -13,8 +13,9 @@ def main():
     while True:
         try:
             buf, source = udp_socket.recvfrom(512)
+            print(f"Received data from {source}")
     
-            response = b""
+            response = b"\x04\xd2\x80" + (b"\x00" * 9)
     
             udp_socket.sendto(response, source)
         except Exception as e:
