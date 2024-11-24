@@ -1,11 +1,8 @@
 import socket
 
 
-# def createheader():
-
-
 def main():
-    print("Server started..")
+    print("DNS Server started..")
     
     udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     udp_socket.bind(("127.0.0.1", 2053))
